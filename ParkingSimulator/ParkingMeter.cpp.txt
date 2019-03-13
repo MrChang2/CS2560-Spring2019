@@ -1,0 +1,13 @@
+#include "ParkingMeter.h"
+
+
+ParkingMeter::ParkingMeter() {
+
+}
+ParkingMeter::ParkingMeter(int min)
+{
+	purchasedMinutes = min;
+}
+int ParkingMeter::getMinutes() {
+	return purchasedMinutes;
+}

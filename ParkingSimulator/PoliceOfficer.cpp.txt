@@ -1,0 +1,34 @@
+#include "PoliceOfficer.h"
+#include <string>
+using namespace std;
+
+
+PoliceOfficer::PoliceOfficer() {
+
+}
+PoliceOfficer::PoliceOfficer(string n, int b, ParkedCar c, ParkingMeter m)
+{
+	name = n;
+	badgeNum = b;
+	car = c;
+	meter = m;
+}
+string PoliceOfficer::getName() {
+	return name;
+}
+int PoliceOfficer::getBadgeNum() {
+	return badgeNum;
+}
+int PoliceOfficer::examineCar(ParkedCar c, ParkingMeter m) {
+	int result = 0;
+	if (c.getMin() > m.getMinutes()) {
+		result = 1;
+	}
+	return result;
+}
+void PoliceOfficer::issueTicket() {
+	ticket = ParkingTicket(car, meter);
+}
+ParkingTicket PoliceOfficer::getTicket() {
+	return ticket;
+}

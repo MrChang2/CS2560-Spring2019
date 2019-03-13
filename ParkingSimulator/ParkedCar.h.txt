@@ -1,0 +1,23 @@
+#pragma once
+#ifndef PARKEDCAR_H
+#define PARKEDCAR_H
+#include <string>
+using namespace std;
+class ParkedCar
+{
+private:
+	string make;
+	string model;
+	string color;
+	string licensePlate;
+	int minutes;
+public:
+	ParkedCar();
+	ParkedCar(string ma, string mo, string c, string lp, int min);
+	string getMake();
+	string getModel();
+	string getColor();
+	string getLicensePlate();
+	int getMin();
+};
+#endif

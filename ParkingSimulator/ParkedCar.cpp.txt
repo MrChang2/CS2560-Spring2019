@@ -1,0 +1,31 @@
+#include "ParkedCar.h"
+#include <string>
+using namespace std;
+
+ParkedCar::ParkedCar() {
+
+}
+ParkedCar::ParkedCar(string ma, string mo, string c, string lp, int min)
+{
+	make = ma;
+	model = mo;
+	color = c;
+	licensePlate = lp;
+	minutes = min;
+}
+string ParkedCar:: getMake() {
+	return make;
+}
+string ParkedCar::getModel() {
+	return model;
+}
+string ParkedCar::getColor() {
+	return color;
+}
+string ParkedCar::getLicensePlate() {
+	return licensePlate;
+}
+int ParkedCar::getMin() {
+	return minutes;
+}
+

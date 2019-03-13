@@ -1,0 +1,27 @@
+#pragma once
+#ifndef POLICEOFFICER_H
+#define POLICEOFFICER_H
+#include "ParkedCar.h"
+#include "ParkingMeter.h"
+#include "ParkingTicket.h"
+#include <string>
+using namespace std;
+
+class PoliceOfficer
+{
+private:
+	string name;
+	int badgeNum;
+	ParkedCar car;
+	ParkingMeter meter;
+	ParkingTicket ticket;
+public:
+	PoliceOfficer();
+	PoliceOfficer(string n, int b, ParkedCar c, ParkingMeter m);
+	int examineCar(ParkedCar c, ParkingMeter m);
+	void issueTicket();
+	string getName();
+	int getBadgeNum();
+	ParkingTicket getTicket();
+};
+#endif

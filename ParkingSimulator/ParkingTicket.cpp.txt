@@ -1,0 +1,30 @@
+#include "ParkingTicket.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+ParkingTicket::ParkingTicket() {
+
+}
+ParkingTicket::ParkingTicket(ParkedCar c, ParkingMeter m) 
+{
+	car = c;
+	meter = m;
+}
+void ParkingTicket::reportCar() {
+	cout << "Make: " << car.getMake() << endl;
+	cout << "Model: " << car.getModel() << endl;
+	cout << "License Plate: " << car.getLicensePlate() << endl;
+}
+void ParkingTicket::calculateFine() {
+	int fine = 25;
+	int minutes = car.getMin() - meter.getMinutes();
+	minutes = minutes - 60;
+	while (minutes > 0) {
+		fine = fine + 10;
+		minutes = minutes - 60;
+	}
+	cout << "The driver owes $" << fine << endl;
+}
+

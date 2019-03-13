@@ -1,0 +1,31 @@
+#include "ParkedCar.h"
+#include "ParkingMeter.h"
+#include "ParkingTicket.h"
+#include "PoliceOfficer.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	ParkedCar myCar = ParkedCar("Honda", "Civic", "Blue", "12FR89A", 300);
+	ParkingMeter meter = ParkingMeter(60);
+	PoliceOfficer cop = PoliceOfficer("Bob", 32481, myCar, meter);
+
+	cout << "Make: " << myCar.getMake() << endl;
+	cout << "Model: " << myCar.getModel() << endl;
+	cout << "Color: " << myCar.getColor() << endl;
+	cout << "License Plate " << myCar.getLicensePlate() << endl;
+	cout << "Time parked: " << myCar.getMin() << " minutes" << endl;
+	cout << "Time purchased: " << meter.getMinutes() << " minutes" << endl;
+
+	int illegal = cop.examineCar(myCar, meter);
+	if (illegal == 1) {
+		cout << "Ticket issued by Officer " << cop.getName() << ", Badge #" << cop.getBadgeNum() << endl;
+		cop.issueTicket();
+		cop.getTicket().calculateFine();
+	}
+	int exit = 0;
+	cout << "Enter a key to exit." << endl;
+	cin >> exit;
+	return 0;
+}

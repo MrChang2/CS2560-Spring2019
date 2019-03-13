@@ -1,0 +1,19 @@
+#pragma once
+#ifndef PARKINGTICKET_H
+#define PARKINGTICKET_H
+#include "ParkedCar.h"
+#include "ParkingMeter.h"
+#include <string>
+using namespace std;
+
+class ParkingTicket
+{
+	ParkedCar car;
+	ParkingMeter meter;
+public:
+	ParkingTicket();
+	ParkingTicket(ParkedCar c, ParkingMeter m);
+	void reportCar();
+	void calculateFine();
+};
+#endif
