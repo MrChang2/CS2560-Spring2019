@@ -1,0 +1,66 @@
+#pragma once
+#include <iostream>
+using namespace std;
+class Date
+{
+private:
+	int month;
+	int day;
+	int year;
+public:
+	Date();
+	Date(int m, int d, int y);
+	~Date();
+	void printNumericalDate();
+	void printMonthDayYear();
+	void printDayMonthYear();
+	void operator++();
+	void operator++(int);
+	void operator--();
+	void operator--(int);
+	int operator-(Date & d);
+	friend ostream &operator<<(ostream &output, const Date &d) {
+		switch (d.month) {
+		case 1:
+			output << "January ";
+			break;
+		case 2:
+			output << "February ";
+			break;
+		case 3:
+			output << "March ";
+			break;
+		case 4:
+			output << "April ";
+			break;
+		case 5:
+			output << "May ";
+			break;
+		case 6:
+			output << "June ";
+			break;
+		case 7:
+			output << "July ";
+			break;
+		case 8:
+			output << "August ";
+			break;
+		case 9:
+			output << "September ";
+			break;
+		case 10:
+			output << "October ";
+			break;
+		case 11:
+			output << "November ";
+		case 12:
+			output << "December ";
+		}
+		output << d.day << ", " << d.year << endl;
+		return output;
+	}
+	friend istream& operator>>(istream &input, Date &d) {
+		input >> d.month >> d.day >> d.year;
+		return input;
+	}
+};

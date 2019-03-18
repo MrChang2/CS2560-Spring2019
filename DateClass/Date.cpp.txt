@@ -1,0 +1,263 @@
+#include "Date.h"
+
+Date::Date()
+{
+}
+Date::Date(int m, int d, int y) {
+	month = m;
+	day = d;
+	year = y;
+}
+Date::~Date()
+{
+}
+void Date::printNumericalDate() {
+	cout << month << "/" << day << "/" << year << endl;
+}
+void Date::printMonthDayYear() {
+	switch (month) {
+	case 1:
+		cout << "January ";
+		break;
+	case 2: 
+		cout << "February ";
+		break;
+	case 3:
+		cout << "March ";
+		break;
+	case 4:
+		cout << "April ";
+		break;
+	case 5:
+		cout << "May ";
+		break;
+	case 6:
+		cout << "June ";
+		break;
+	case 7:
+		cout << "July ";
+		break;
+	case 8:
+		cout << "August ";
+		break;
+	case 9:
+		cout << "September ";
+		break;
+	case 10:
+		cout << "October ";
+		break;
+	case 11:
+		cout << "November ";
+	case 12:
+		cout << "December ";
+	}
+	cout << day << ", " << year << endl;
+}
+void Date::printDayMonthYear() {
+	cout << day << " ";
+	switch (month) {
+	case 1:
+		cout << "January ";
+		break;
+	case 2:
+		cout << "February ";
+		break;
+	case 3:
+		cout << "March ";
+		break;
+	case 4:
+		cout << "April ";
+		break;
+	case 5:
+		cout << "May ";
+		break;
+	case 6:
+		cout << "June ";
+		break;
+	case 7:
+		cout << "July ";
+		break;
+	case 8:
+		cout << "August ";
+		break;
+	case 9:
+		cout << "September ";
+		break;
+	case 10:
+		cout << "October ";
+		break;
+	case 11:
+		cout << "November ";
+	case 12:
+		cout << "December ";
+	}
+	cout << year << endl;
+}
+void Date::operator++() {
+	if (month == 2 && day == 28) {		//if date is last day of february
+		month++;
+		day = 1;
+	}
+	else if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 30) {	//if month only has 30 days
+		month++;
+		day = 1;
+	}
+	else if (day == 31) {	//otherwise the month has 31 days
+		month++;
+		day = 1;
+		if (month == 13) {	//if the current date was December 31st, increment year as well and set month to January
+			year++;
+			month = 1;
+		}
+	}
+	else {		//if none are true, just increment day
+		day++;
+	}
+}
+void Date::operator++(int) {
+	if (month == 2 && day == 28) {		//if date is last day of february
+		month++;
+		day = 1;
+	}
+	else if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 30) {	//if month only has 30 days
+		month++;
+		day = 1;
+	}
+	else if (day == 31) {	//otherwise the month has 31 days
+		month++;
+		day = 1;
+		if (month == 13) {	//if the current date was December 31st, increment year as well and set month to January
+			year++;
+			month = 1;
+		}
+	}
+	else {		//if none are true, just increment day
+		day++;
+	}
+}
+void Date::operator--() {
+	if (day == 1) {		//if last day of month
+		month--;
+		if (month == 2) {	//if last day of march
+			day = 28;
+		}
+		else if (month == 4 || month == 6 || month == 9 || month == 11) {	//if previous month has 30 days
+			day = 30;
+		}
+		else {			//otherwise the day is set to 31
+			day = 31;
+		}
+		if (month == 0) {		//if the current day is January 1st, decrement year, set day to 31 and set month to December
+			year--;
+			month = 12;
+		}
+	}
+	else {		//if none are true, just decrement day
+		day--;
+	}
+}
+void Date::operator--(int) {
+	if (day == 1) {		//if last day of month
+		month--;
+		if (month == 2) {	//if last day of march
+			day = 28;
+		}
+		else if (month == 4 || month == 6 || month == 9 || month == 11) {	//if previous month has 30 days
+			day = 30;
+		}
+		else {			//otherwise the day is set to 31
+			day = 31;
+		}
+		if (month == 0) {		//if the current day is January 1st, decrement year, set day to 31 and set month to December
+			year--;
+			month = 12;
+		}
+	}
+	else {		//if none are true, just decrement day
+		day--;
+	}
+}
+int Date::operator-(Date & d) {
+	int difference = 0;
+	int thisDayCount = 0;
+	int otherDayCount = 0;
+	for (int x = 1; x < month; x++) {
+		if (x == 2) {
+			thisDayCount = thisDayCount + 28;
+		}
+		else if (x == 4 || x == 6 || x == 9 || x == 11) {
+			thisDayCount = thisDayCount + 30;
+		}
+		else {
+			thisDayCount = thisDayCount + 31;
+		}
+	}
+	for (int y = 1; y < d.month; y++) {
+		if (y == 2) {
+			otherDayCount = otherDayCount + 28;
+		}
+		else if (y == 4 || y == 6 || y == 9 || y == 11) {
+			otherDayCount = otherDayCount + 30;
+		}
+		else {
+			otherDayCount = otherDayCount + 31;
+		}
+	}
+	thisDayCount = thisDayCount + day;
+	otherDayCount = otherDayCount + d.day;
+	difference = difference + thisDayCount - otherDayCount;
+	difference = difference + 365 * (year - d.year);
+	return abs(difference);
+}
+int main() {
+	Date today(3, 13, 2019);
+	Date newYears(1, 1, 2019);
+	Date AprilFools(4, 1, 2019);
+	
+	cout << "Today's Date is: " << endl;
+	today.printDayMonthYear();
+	today.printMonthDayYear();
+	today.printNumericalDate();
+	cout << "Using << Operator: " << today << endl;
+
+	cout << "Tommorow's Date is: " << endl;
+	++today;
+	today.printMonthDayYear();
+
+	cout << "Yesterday's Date is: " << endl;
+	--today;
+	--today;
+	today.printMonthDayYear();
+
+	cout << "New Years Day is: " << endl;
+	newYears.printMonthDayYear();
+	cout << "The day before is: " << endl;
+	newYears--;
+	newYears.printMonthDayYear();
+	cout << "Back to New Years: " << endl;
+	newYears++;
+	newYears.printMonthDayYear();
+
+	cout << "April Fools is on: " << endl;
+	AprilFools.printMonthDayYear();
+	cout << "The day before is: " << endl;
+	AprilFools--;
+	AprilFools.printMonthDayYear();
+	cout << "Back to April Fools: " << endl;
+	AprilFools++;
+	AprilFools.printMonthDayYear();
+
+	Date day;
+	cout << "Initializing day using >> operator: " << endl;
+	cin >> day;
+	day.printMonthDayYear();
+
+	cout << "Testing subtraction operator, enter m/d/y: " << endl;
+	cout << "Today's date - new date: "  << endl;
+	cout << today << " - " << day << " = " << today - day << endl;
+
+	char done;
+	cout << "Enter any key to exit." << endl;
+	cin >> done;
+	return 0;
+}
