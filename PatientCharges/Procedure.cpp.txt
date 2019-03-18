@@ -1,0 +1,51 @@
+#include "Procedure.h"
+#include <iostream>
+using namespace std;
+
+Procedure::Procedure()
+{
+}
+Procedure::Procedure(string n, string d, string p, double c) {
+	name = n;
+	date = d;
+	practitioner = p;
+	charge = c;
+}
+
+Procedure::~Procedure()
+{
+}
+
+void Procedure::setName(string n) {
+	name = n;
+}
+string Procedure::getName() {
+	return name;
+}
+void Procedure::setDate(string n) {
+	date = n;
+}
+string Procedure::getDate() {
+	return date;
+}
+void Procedure::setPractitioner(string n) {
+	practitioner = n;
+}
+string Procedure::getPractitioner() {
+	return practitioner;
+}
+void Procedure::setCharge(double c) {
+	charge = c;
+}
+double Procedure::getCharge() {
+	return charge;
+}
+void Procedure::printProcedure() {
+	cout << "Procedure Name: " << name << endl;
+	cout << "Date: " << date << endl;
+	cout << "Practitioner: " << practitioner << endl;
+	cout << "Charge: $" << charge << endl;
+}
+double Procedure::operator+(Procedure p) {
+	return charge + p.charge;
+}
