@@ -1,3 +1,33 @@
+/**
+* @file
+* @brief Main program for Patient class
+*/
+#include "Patient.h"
+
+/**
+* @brief Unused default contructor for Patient
+*/
+Patient::Patient()
+{
+}
+/**
+* @brief Main constructor for Patient. Takes all parameters as arguments and assigns them appropriately.
+*/
+Patient::Patient(string n, string mn, string ln, string a, string c, string s, string z, string p, string ename, string enumber) {
+	name = n;
+	middleName = mn;
+	lastName = ln;
+	address = a;
+	city = c;
+	state = s;
+	zip = z;
+	phoneNumber = p;
+	emergencyName = ename;
+	emergencyNumber = enumber;
+}
+/**
+* @brief Unused default destructor for Patient
+*/
 Patient::~Patient()
 {
 }
