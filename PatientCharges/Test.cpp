@@ -1,3 +1,10 @@
+/**
+* @file
+* @author Matthew Chang
+* @date 4/10/19
+*
+* @brief Program simulates the storage of information regarding a patient and medical procedures performed on them.
+*/
 #include "Patient.h"
 #include "Procedure.h"
 #include <iostream>
