@@ -1,13 +1,30 @@
+/**
+* Copyright (C) 2019 Matthew Chang
+*
+* This file is a part of Gameof21
+*
+* I did this for homework. If you want to use it for some reason, go ahead.
+*/
+
+/**
+* @file 
+* @author Matthew Chang
+* @date 4/10/2019
+* @brief The main testing program.
+*/
 #include <iostream>
 #include "Die.h"
 using namespace std;
 
+/**
+* @brief The main method of the whole project. Runs all relevant methods.
+*/
 int main() {
-	Die die1(6);			//simulates dice 1
-	Die die2(6);			//simulates dice 2
-	int playerScore = 0;	//tracks player score
-	int cpuScore = 0;		//tracks computer score
-	int done = 2;			//checks if player is done, 1 is done
+	Die die1(6);			/**<Simulates the first dice*/
+	Die die2(6);			/**<Simulates the second dice*/
+	int playerScore = 0;	/**Tracks and records the player's current score*/
+	int cpuScore = 0;		/**Tracks and records the CPU's current score*/
+	int done = 2;			/**Takes player input, where any non-two number indicates that player is finished*/
 	int rollPrompt = 1;
 
 	//roll for player
