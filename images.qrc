@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>QTIcons/copy.png</file>
+        <file>QTIcons/exit.png</file>
+        <file>QTIcons/new.png</file>
+        <file>QTIcons/open.png</file>
+        <file>QTIcons/paste.png</file>
+        <file>QTIcons/redo.png</file>
+        <file>QTIcons/save.png</file>
+        <file>QTIcons/undo.png</file>
+    </qresource>
+</RCC>
